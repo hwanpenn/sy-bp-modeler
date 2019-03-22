@@ -1,0 +1,59 @@
+<div class="modal" ng-controller="FlowableAssignmentPopupCtrl">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="close()">&times;</button>
+                <h2 translate>PROPERTY.ASSIGNMENT.TITLE</h2>
+            </div>
+            <div class="modal-body">
+            
+            	<div class="row row-no-gutter">
+            		<div class="form-group">
+            			<label for="assigneeField">{{'PROPERTY.ASSIGNMENT.ASSIGNEE' | translate}}</label>
+            			<input type="text" id="assigneeField" class="form-control" ng-model="assignment.assignee" placeholder="{{'PROPERTY.ASSIGNMENT.ASSIGNEE_PLACEHOLDER' | translate}}" />
+            		</div>
+            	</div>
+            	
+                <div class="row row-no-gutter">
+                    <div class="form-group">
+                    	<label for="userField">{{'PROPERTY.ASSIGNMENT.CANDIDATE_USERS' | translate}}</label>
+                        <div>
+                         <input id="userField" class="form-control" type="hidden"  ng-model="candidateUsersValue" />
+            	         <div class="form-inline">    
+            	            <input id="userNameField" style="width:520px;" class="form-control" ng-dblclick="candidateUserCtrl()" type="text" readonly="readonly" ng-model="candidateUsersNameValue" placeholder="{{'PROPERTY.ASSIGNMENT.CANDIDATEUSERS_PLACEHOLDER' | translate}}"/>
+            	             <button ng-click="deleteAllUser()" type="submit" class="btn" translate>PROPERTY.DELETEALL</button>
+            	            <!-- <i class="glyphicon glyphicon-wrench clickable-property" ng-click="candidateUserCtrl()" ></i> -->
+            	         </div>  
+                        </div>
+                   	</div>
+            
+                    <div class="form-group">
+                    	<label for="groupField">{{'PROPERTY.ASSIGNMENT.CANDIDATE_GROUPS' | translate}}</label>
+                        <div>
+            	          	<input id="groupField" class="form-control" type="hidden"   ng-model="candidateGroupsValue"  />
+            	          	 <div class="form-inline">    
+            	          	<input id="groupNameField" style="width:520px;" ng-dblclick="candidateGroupCtrl()" class="form-control" type="text" readonly="readonly"  ng-model="candidateGroupsNameValue"  placeholder="{{'PROPERTY.ASSIGNMENT.CANDIDATEGROUPS_PLACEHOLDER' | translate}}" />
+            	          	<button ng-click="deleteAllGropu()" type="submit" class="btn" translate>PROPERTY.DELETEALL</button> 
+            	          	 <!--  <i class="glyphicon glyphicon-wrench clickable-property" ng-click="candidateGroupCtrl()"></i>-->
+                        	</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                    	<label for="ruleField">{{'PROPERTY.ASSIGNMENT.CANDIDATE_RULES' | translate}}</label>
+                        <div>
+            	          	<input id="ruleField" class="form-control" type="hidden"   ng-model="candidateRulesValue"  />
+            	          	<input id="ruleNameField" class="form-control" ng-dblclick="candidateRuleCtrl()" type="text" readonly="readonly"  ng-model="candidateRulesNameValue"  placeholder="{{'PROPERTY.ASSIGNMENT.CANDIDATERULES_PLACEHOLDER' | translate}}"/>
+            	          	<!--  <i class="glyphicon glyphicon-wrench clickable-property" ng-click="candidateRuleCtrl()"></i> -->
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+            <div class="modal-footer">
+                <button ng-click="close()" class="btn btn-primary" translate>ACTION.CANCEL</button>
+                <button ng-click="save()" class="btn btn-primary" translate>ACTION.SAVE</button>
+            </div>
+        </div>
+    </div>
+</div>

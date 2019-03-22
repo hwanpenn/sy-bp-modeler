@@ -1,0 +1,140 @@
+<div class="modal" ng-controller="KisBpmcandidateGroupPopupCtrl">
+    <div class="modal-dialog" style="width:800px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="close()">&times;</button>
+                <h2 translate>PROPERTY.CANDIDATE_GROUPS.SELECT</h2>
+            </div>
+            <div class="modal-body"> 
+            <input type="text" ng-model="searchparam" style="width:500px;height:34px" class="input-medium search-query"/>
+ 			<button ng-click="search()" type="submit" class="btn" translate>PROPERTY.SEARCH</button> 
+            	<ul class="nav nav-tabs" role="tablist">
+ 					 <li id="jobid" role="presentation" class="active" >
+ 					 	<a  role="tab" href="" data-toggle="tab" ng-click="setName('job')" translate>PROPERTY.JOB.TITLE</a>
+ 					 </li>
+  					 <li id="deptid" role="presentation">
+  					 	<a role="tab" data-toggle="tab" href=""  ng-click="setName('dept')" translate>PROPERTY.DEPT.TITLE</a>
+  					 </li>
+  					 <li id="roleid" role="presentation">
+  					 	<a role="tab" data-toggle="tab" href="" ng-click="setName('role')" translate>PROPERTY.ROLE.TITLE</a>
+					</li>
+                 </ul>
+                 <div class="tab-content"  >
+       			<div role="tabpanel" id="job"  class="tab-pane fade  in active center-td" >	
+       				<table  class="table table-striped">
+            		<thead>
+						<tr>
+							<td translate>PROPERTY.ROWNO</td>
+							<td translate>PROPERTY.JOB.SELECT</td>
+							<td translate>PROPERTY.JOB.ID</td>
+							<td translate>PROPERTY.JOB.NAME</td>
+						</tr>
+					</thead>
+					<tbody>
+   						<tr ng-repeat="job in jobs.items">
+   							<td>{{ $index + 1 }}</td>
+    						<td><input ng-checked="isChecked(job.id)" ng-click="updateSelection($event,job.id,job.name)" type="checkbox"  /></td>
+    						<td>{{job.id}}</td>
+    						<td>{{job.name}}</td>
+   						 </tr>
+					</tbody>
+				</table>
+				<ul class="pagination">
+					<li>
+						<a ng-click="Previous('job')">
+							<span translate>PROPERTY.PAGE.PREVIOUS</span>
+						</a>
+					</li>
+					<li ng-repeat="page in jobpageList" ng-init="sort='job'" ng-class="{active: isActivePage(page,sort)}" >
+						<a ng-click="selectPage(page,sort)">{{ page }}</a>
+					</li>
+					<li>
+						<a ng-click="Next('job')">
+							<span translate>PROPERTY.PAGE.NEXT</span>
+						</a>
+					</li>
+				</ul>
+       		</div>
+            	
+            	<div  role="tabpanel" id="dept" class="tab-pane fade  in center-td" >	
+       				<table  class="table table-striped">
+            		<thead>
+						<tr>
+							<td translate>PROPERTY.ROWNO</td>
+							<td translate>PROPERTY.DEPT.SELECT</td>
+							<td translate>PROPERTY.DEPT.ID</td>
+							<td translate>PROPERTY.DEPT.NAME</td>
+						</tr>
+					</thead>
+					<tbody>
+   						<tr ng-repeat="dept in depts.items">
+   							<td>{{ $index + 1 }}</td>
+    						<td><input ng-checked="isChecked(dept.id)" ng-click="updateSelection($event,dept.id,dept.name)"   type="checkbox" /></td>
+    						<td>{{dept.id}}</td>
+    						<td>{{dept.name}}</td>
+   						 </tr>
+					</tbody>
+				</table>
+				<ul class="pagination">
+					<li>
+						<a ng-click="Previous('dept')">
+							<span translate>PROPERTY.PAGE.PREVIOUS</span>
+						</a>
+					</li>
+					<li ng-repeat="page in deptpageList" ng-init="sort='dept'"  ng-class="{active: isActivePage(page,sort)}" >
+						<a ng-click="selectPage(page,sort)">{{ page }}</a>
+					</li>
+					<li>
+						<a ng-click="Next('dept')">
+							<span translate>PROPERTY.PAGE.NEXT</span>
+						</a>
+					</li>
+				</ul>
+       		</div>
+       		
+       		
+       		<div id="role" role="tabpanel" class="tab-pane fade  in center-td">	
+       				<table  class="table table-striped">
+            		<thead>
+						<tr>
+							<td translate>PROPERTY.ROWNO</td>
+							<td translate>PROPERTY.ROLE.SELECT</td>
+							<td translate>PROPERTY.ROLE.ID</td>
+							<td translate>PROPERTY.ROLE.NAME</td>
+						</tr>
+					</thead>
+					<tbody>
+   						<tr ng-repeat="role in roles.items">
+   							<td>{{ $index + 1 }}</td>
+    						<td><input ng-checked="isChecked(role.id)" ng-click="updateSelection($event,role.id,role.name)"type="checkbox" /></td>
+    						<td>{{role.id}}</td>
+    						<td>{{role.name}}</td>
+   						 </tr>
+					</tbody>
+				</table>
+				<ul class="pagination">
+					<li>
+						<a ng-click="Previous('role')">
+							<span translate>PROPERTY.PAGE.PREVIOUS</span>
+						</a>
+					</li>
+					<li ng-repeat="page in rolepageList"  ng-init="sort='role'" ng-class="{active: isActivePage(page,sort)}" >
+						<a ng-click="selectPage(page,sort)">{{ page }}</a>
+					</li>
+					<li>
+						<a ng-click="Next('role')">
+							<span translate>PROPERTY.PAGE.NEXT</span>
+						</a>
+					</li>
+				</ul>
+       		</div>
+            	
+				</div>
+            </div>
+            <div class="modal-footer">
+                <button ng-click="close()" class="btn btn-primary" translate>ACTION.CANCEL</button>
+                <button ng-click="save()" class="btn btn-primary" translate>ACTION.SAVE</button>
+            </div>
+        </div>
+    </div>
+</div>

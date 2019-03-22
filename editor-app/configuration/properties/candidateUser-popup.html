@@ -1,0 +1,61 @@
+<div class="modal" ng-controller="KisBpmcandidateUserPopupCtrl" ng-app="customersApp">
+    <div class="modal-dialog" style="width:800px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="close()">&times;</button>
+                <h2 translate>PROPERTY.CANDIDATE_USER.SELECT</h2>
+            </div>
+            <div class="modal-body" > 
+			  	<input type="text" ng-model="searchparam" style="width:500px;height:34px" class="input-medium search-query"/>
+ 				 <button ng-click="search()" type="submit" class="btn" translate>PROPERTY.SEARCH</button>
+            	<ul class="nav nav-tabs">
+ 					 <li class="active" >
+ 					 	<a href="#user" data-toggle="tab" translate>PROPERTY.USER.TITLE</a>
+ 					 </li>
+                 </ul>
+                 <div class="tab-content"  >
+       			<div id="user"  class="tab-pane fade  in active center-td" >	
+       				<table  class="table table-striped">
+            		<thead>
+						<tr>
+							<td translate>PROPERTY.ROWNO</td>
+							<td translate>PROPERTY.USER.SELECT</td>
+							<td translate>PROPERTY.USER.ID</td>
+							<td translate>PROPERTY.USER.NAME</td>
+						</tr>
+					</thead>
+					<tbody>
+   						<tr ng-repeat="user in users.items">
+   							<td>{{ $index + 1 }}</td>
+    						<td><input ng-checked="isChecked(user.id)" ng-click="updateSelection($event,user.id,user.lastName)" type="checkbox"  /></td>
+    						<td>{{user.id}}</td>
+    						<td>{{user.lastName}}</td>
+   						 </tr>
+					</tbody>
+				</table>
+				<ul class="pagination">
+					<li>
+						<a ng-click="Previous()">
+							<span translate>PROPERTY.PAGE.PREVIOUS</span>
+						</a>
+					</li>
+					<li ng-repeat="page in userpageList" ng_model="currentPage" ng-class="{active: isActivePage(page)}" >
+						<a ng-click="selectPage(page)">{{ page }}</a>
+					</li>
+					<li>
+						<a ng-click="Next()">
+							<span translate>PROPERTY.PAGE.NEXT</span>
+						</a>
+					</li>
+				</ul>
+       		</div>
+            	
+				</div>
+            </div>
+            <div class="modal-footer">
+                <button ng-click="close()" class="btn btn-primary" translate>ACTION.CANCEL</button>
+                <button ng-click="save()" class="btn btn-primary" translate>ACTION.SAVE</button>
+            </div>
+        </div>
+    </div>
+</div>
